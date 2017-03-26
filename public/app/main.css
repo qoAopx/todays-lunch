@@ -1,0 +1,144 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+#map {
+    height: 320px;
+}
+
+.poi_number {
+    display: inline-block;
+}
+
+.poi_number:after {
+    content: ".";
+    color: blue;
+    margin-right: 0.5rem;
+}
+
+.poi_recent {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_recent a {
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_visit_date {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_open_now {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_open_now:before {
+    content: "\2B55";
+    color: blue;
+    margin-right: 0.5rem;
+}
+
+.poi_name {
+    display: block;
+}
+
+.poi_rating {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_rating:before {
+    content: "\1F31F";
+    color: orange;
+    margin-right: 0.5rem;
+}
+
+.poi_price_level {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+.poi_price_level:before {
+    content: "\1F4B0";
+    color: orange;
+    margin-right: 0.5rem;
+}
+
+.poi_img {
+    display: block;
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #cccccc;
+}
+
+.poi_vicinity {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+}
+
+@media ( min-width: 768px) {
+    body {
+        //        background-color: red;
+    }
+    .poi_name {
+        display: inline-block;
+    }
+}
+
+
+/*
+@media ( min-width: 768px) {
+    #banner {
+        min-height: 300px;
+        border-bottom: none;
+    }
+    .bs-docs-section {
+        margin-top: 8em;
+    }
+    .bs-component {
+        position: relative;
+    }
+    .bs-component .modal {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        bottom: auto;
+        z-index: 1;
+        display: block;
+    }
+    .bs-component .modal-dialog {
+        width: 90%;
+    }
+    .bs-component .popover {
+        position: relative;
+        display: inline-block;
+        width: 220px;
+        margin: 20px;
+    }
+    .nav-tabs {
+        margin-bottom: 15px;
+    }
+    .progress {
+        margin-bottom: 10px;
+    }
+}
+*/

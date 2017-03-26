@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Today's Lunch</title>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="app/main.css">
+
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div>
+                    <h4>Today's Lunch</h4>
+                    <h6>lunch spot guide &amp; visit history</h6>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h4>Search Range (<span id="search_range"></span>)</h4>
+                </div>
+                <div class="bs-component" style="margin-bottom: 15px;margin-top:15px;">
+                    <div class="btn-group btn-group-justified">
+                        <a href="#" onClick="search_range(400);return false;" class="btn btn-default">400 m</a>
+                        <a href="#" onClick="search_range(600);return false;" class="btn btn-default">600 m</a>
+                        <a href="#" onClick="search_range(800);return false;" class="btn btn-default">800 m</a>
+                        <a href="#" onClick="search_range(1000);return false;" class="btn btn-default">1000 m</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables -->
+        <div class="bs-docs-section">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h4>Places</h4>
+                        <span class="poi_open_now">open now</span>
+                        <span class="poi_rating">place's rating</span>
+                        <span class="poi_price_level">0:affordable - 4:expensive</span>
+                    </div>
+
+                    <div class="bs-component">
+                        <table id="places" class="table table-striped table-hover ">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="bs-docs-section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h4>Map</h4>
+                        <div class="bs-component">
+                            <a href="#" id="center_position" class="btn btn-primary btn-sm">Center Position</a>
+                            <a href="#" id="current_position" class="btn btn-primary btn-sm">Current Position</a>
+                        </div>
+                    </div>
+                    <div class="bs-component">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tables -->
+        <div class="bs-docs-section">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h3>History</h3>
+                        <div class="bs-component">
+                            <a href="#" id="clear_history" class="btn btn-warning btn-sm">Clear History</a>
+                        </div>
+                    </div>
+
+                    <div class="bs-component">
+                        <table id="history" class="table table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="app/main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYkwznWr3dQvuDCnyANwYMJfpaZCMa--w&libraries=places&callback=init" async defer></script>
+
+    <script type="text/javascript">
+        $('.bs-component [data-toggle="popover"]').popover();
+        $('.bs-component [data-toggle="tooltip"]').tooltip();
+    </script>
+
+</body>
+
+</html>
