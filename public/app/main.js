@@ -146,7 +146,7 @@ function createPlaceList(places) {
         tbl.append(tr);
     }
 
-
+    window.location.hash = "title_places";
 }
 
 function num(n) {
