@@ -80,7 +80,7 @@ function loadMap(location) {
     service.nearbySearch({
         location: location,
         radius: get_range(),
-        types: ['restaurant', 'food'],
+        types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
         rankby: google.maps.places.RankBy.DISTANCE
     }, callback);
 }
