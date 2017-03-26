@@ -354,7 +354,7 @@ function createMarker(place, label) {
     });
 
     function icon(label) {
-        var url = 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + label + '|FF6666|000000';
+        var url = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + label + '|FF6666|000000';
         return new google.maps.MarkerImage(url);
     }
 
