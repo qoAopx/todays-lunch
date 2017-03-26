@@ -62,8 +62,9 @@ function loadMap(location) {
     // console.log(location);
     if (location === null || location === undefined) {
         location = {};
-        location.lat = -33.867;
-        location.lng = 151.195;
+        // tokyo station
+        location.lat = 35.684;
+        location.lng = 139.760;
     }
 
     map = new google.maps.Map(document.getElementById('map'), {
