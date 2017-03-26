@@ -109,12 +109,12 @@ body {
 .poi_img {
     display: block;
     position: relative;
+    margin: 5px auto;
 }
 
 .poi_img:before {
     content: '';
     display: block;
-    margin: 5px auto;
     position: absolute;
     top: 0;
     left: 0;
