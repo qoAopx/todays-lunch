@@ -317,7 +317,7 @@ function set_recent(poi) {
 
 function get_option() {
     var option = JSON.parse(window.localStorage.getItem('option'));
-    console.log(option);
+    // console.log(option);
     if (option === null || option === undefined) {
         option = {};
     }

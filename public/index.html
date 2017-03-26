@@ -18,40 +18,67 @@
 
 </head>
 
-<body>
-
+<body id="title_top">
+    <!--
     <header>
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-                <div>
-                    <h4>Today's Lunch</h4>
-                    <h6>lunch spot guide &amp; visit history</h6>
+                <div class="navbar-header">
+                    <p><a href="#" class="navbar-brand">Today's Lunch</a></p>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#title_places">#Places</a></li>
+                        <li><a href="#title_map">#Map</a></li>
+                        <li><a href="#title_history">#History</a></li>
+                </div>
+            </div>
+        </div>
+    </header>
+-->
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#title_top" class="navbar-brand">Today's Lunch</a>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#title_places">#Places</a></li>
+                        <li><a href="#title_map">#Map</a></li>
+                        <li><a href="#title_history">#History</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </header>
 
     <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="page-header">
-                    <h4>Search Range (<span id="search_range"></span>)</h4>
-                </div>
-                <div class="bs-component" style="margin-bottom: 15px;margin-top:15px;">
-                    <div class="btn-group btn-group-justified">
-                        <a href="#" onClick="search_range(400);return false;" class="btn btn-default">400 m</a>
-                        <a href="#" onClick="search_range(600);return false;" class="btn btn-default">600 m</a>
-                        <a href="#" onClick="search_range(800);return false;" class="btn btn-default">800 m</a>
-                        <a href="#" onClick="search_range(1000);return false;" class="btn btn-default">1000 m</a>
+        <div class="bs-docs-section" id="title_search">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header">
+                        <h4>Search Range (<span id="search_range"></span>)</h4>
+                    </div>
+                    <div class="bs-component" style="margin-bottom: 15px;margin-top:15px;">
+                        <div class="btn-group btn-group-justified">
+                            <a href="#" onClick="search_range(400);return false;" class="btn btn-default">400 m</a>
+                            <a href="#" onClick="search_range(600);return false;" class="btn btn-default">600 m</a>
+                            <a href="#" onClick="search_range(800);return false;" class="btn btn-default">800 m</a>
+                            <a href="#" onClick="search_range(1000);return false;" class="btn btn-default">1000 m</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Tables -->
-        <div class="bs-docs-section">
-
+        <div class="bs-docs-section" id="title_places">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
@@ -74,7 +101,7 @@
         </div>
 
         <!-- Map -->
-        <div class="bs-docs-section">
+        <div class="bs-docs-section" id="title_map">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
@@ -92,8 +119,7 @@
         </div>
 
         <!-- Tables -->
-        <div class="bs-docs-section">
-
+        <div class="bs-docs-section" id="title_history">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
@@ -122,8 +148,7 @@
 
     </div>
 
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="app/main.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYkwznWr3dQvuDCnyANwYMJfpaZCMa--w&libraries=places&callback=init" async defer></script>

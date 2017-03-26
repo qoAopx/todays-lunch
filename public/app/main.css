@@ -6,8 +6,12 @@ html {
 body {
     margin: 0;
     padding: 0;
-    padding-top: 80px;
+    //    padding-top: 80px;
     overflow-x: hidden;
+}
+
+.bs-docs-section {
+    padding-top: 60px;
 }
 
 #map {
@@ -95,17 +99,9 @@ body {
 }
 
 @media ( min-width: 768px) {
-    body {
-        //        background-color: red;
-    }
     .poi_name {
         display: inline-block;
     }
-}
-
-
-/*
-@media ( min-width: 768px) {
     #banner {
         min-height: 300px;
         border-bottom: none;
@@ -141,4 +137,3 @@ body {
         margin-bottom: 10px;
     }
 }
-*/
