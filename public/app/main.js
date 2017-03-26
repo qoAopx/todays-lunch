@@ -96,6 +96,9 @@ function callback(results, status) {
             var poi = results[i];
             createMarker(poi, (i + 1));
         }
+
+        window.location.hash = "";
+        window.location.hash = "title_places";
     }
 }
 
@@ -146,8 +149,6 @@ function createPlaceList(places) {
         tbl.append(tr);
     }
 
-    window.location.hash = "";
-    window.location.hash = "title_places";
 }
 
 function num(n) {
