@@ -96,31 +96,11 @@ body {
     margin-right: 0.5rem;
 }
 
-
-/*
 .poi_img {
     display: block;
     margin: 5px auto;
     padding: 5px;
     border: 1px solid #cccccc;
-}
-*/
-
-.poi_img {
-    display: block;
-    position: relative;
-    margin: 5px auto;
-}
-
-.poi_img:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 0px 8px rgba(255, 255, 255, 0.6);
 }
 
 .poi_vicinity {
