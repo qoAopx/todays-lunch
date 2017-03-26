@@ -6,9 +6,11 @@ var g_places = [];
 function init() {
 
     google.maps.event.addDomListener(window, "resize", function() {
-        var center = map.getCenter();
-        google.maps.event.trigger(map, "resize");
-        map.setCenter(center);
+        if (map !== null && map !== undefined) {
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        }
     });
 
     currentPosition();
