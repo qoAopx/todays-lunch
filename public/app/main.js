@@ -109,7 +109,7 @@ function createHistoryList() {
         var tr = $('<tr></tr>');
         tr.append($('<td></td>').append(num(i + 1)));
         tr.append($('<td></td>').append(visit_date(poi)));
-        tr.append($('<td></td>').append(name(poi)));
+        tr.append($('<td></td>').append(name(poi)).append(" ").append(place_info(poi)));
 
         tbl.append(tr);
 
