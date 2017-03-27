@@ -2,6 +2,7 @@ var map;
 var infowindow;
 var API_KEY = 'AIzaSyCYkwznWr3dQvuDCnyANwYMJfpaZCMa--w';
 var g_places = [];
+var markers = [];
 
 function init() {
 
@@ -42,17 +43,17 @@ function init() {
         service.textSearch({
             location: map.getCenter(),
             radius: get_range(),
-            types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
-            rankby: google.maps.places.RankBy.DISTANCE,
+            //types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
+            //rankby: google.maps.places.RankBy.DISTANCE,
             query: q
         }, callback);
 
-        $('.navbar-toggle').click() //bootstrap 3.x by Richard
+        $('.navbar-toggle').click(); //bootstrap 3.x by Richard
 
     });
 
     $('.nav a').on('click', function() {
-        $('.navbar-toggle').click() //bootstrap 3.x by Richard
+        $('.navbar-toggle').click(); //bootstrap 3.x by Richard
     });
 }
 
@@ -114,14 +115,31 @@ function callback(results, status) {
 
         createPlaceList(results);
 
+        for (var p in markers) {
+            var m = markers[p];
+            m.setMap(null);
+        }
+        markers = [];
+
         for (var i = 0; i < results.length; i++) {
             var poi = results[i];
             createMarker(poi, (i + 1));
         }
 
+        bounds_map();
+
         window.location.hash = "";
         window.location.hash = "title_places";
     }
+}
+
+function bounds_map() {
+    var bounds = new google.maps.LatLngBounds();
+    for (var p in markers) {
+        var m = markers[p];
+        bounds.extend(m.getPosition());
+    }
+    map.fitBounds(bounds);
 }
 
 function createHistoryList() {
@@ -416,6 +434,8 @@ function createMarker(place, label) {
         position: place.geometry.location,
         icon: icon(label)
     });
+
+    markers.push(marker);
 
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name);
