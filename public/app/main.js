@@ -113,24 +113,29 @@ function loadMap(location) {
 function callback(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
 
+        g_places = results; //一時保存
+
         createPlaceList(results);
-
-        for (var p in markers) {
-            var m = markers[p];
-            m.setMap(null);
-        }
-        markers = [];
-
-        for (var i = 0; i < results.length; i++) {
-            var poi = results[i];
-            createMarker(poi, (i + 1));
-        }
-
-        bounds_map();
+        createMarkers(results);
 
         window.location.hash = "";
         window.location.hash = "title_places";
     }
+}
+
+function createMarkers(places) {
+    for (var p in markers) {
+        var m = markers[p];
+        m.setMap(null);
+    }
+    markers = [];
+
+    for (var i = 0; i < places.length; i++) {
+        var poi = places[i];
+        createMarker(poi, (i + 1));
+    }
+
+    bounds_map();
 }
 
 function bounds_map() {
@@ -164,7 +169,6 @@ function createHistoryList() {
 }
 
 function createPlaceList(places) {
-    g_places = places; //一時保存
 
     var tbl = $('#places tbody');
     //    $('#places').$("tbody").html('');
@@ -216,6 +220,7 @@ function recent_visit(poi) {
             click: function(event) {
                 set_history(poi);
                 createPlaceList(g_places);
+                createMarkers(g_places);
             }
         }
     });
