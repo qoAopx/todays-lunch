@@ -9,18 +9,6 @@ body {
     overflow-x: hidden;
 }
 
-.navbar-brand {
-    padding: 14px 14px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.navbar-nav li a {
-    margin-top: 14px;
-    margin-bottom: 0;
-    padding: 0 14px;
-}
-
 .bs-docs-section {
     padding-top: 50px;
 }

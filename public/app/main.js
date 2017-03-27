@@ -31,7 +31,21 @@ function init() {
     $('#clear_history').on('click', function() {
         clear_history();
     });
-
+    $('#search').on('click', function() {
+        var q = $('#search_text').val();
+        if (q === null || q === undefined || q === '') {
+            // console.log('no word');
+            return;
+        }
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch({
+            location: map.getCenter(),
+            radius: get_range(),
+            types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
+            rankby: google.maps.places.RankBy.DISTANCE,
+            query: q
+        }, callback);
+    });
 }
 
 function search_range(_search_range) {
