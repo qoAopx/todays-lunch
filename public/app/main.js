@@ -428,11 +428,16 @@ function set_range(range) {
 
 
 function createMarker(place, label) {
+
+    var visited = (get_recent(place) !== null);
+    console.log(visited);
+    var icon_type = icon(label, visited);
+    console.log(icon_type);
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
         position: place.geometry.location,
-        icon: icon(label)
+        icon: icon_type
     });
 
     markers.push(marker);
@@ -442,8 +447,9 @@ function createMarker(place, label) {
         infowindow.open(map, this);
     });
 
-    function icon(label) {
-        var url = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + label + '|FF6666|000000';
+    function icon(label, visited) {
+        var color = visited ? '19B902' : '167CF4';
+        var url = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + label + '|' + color + '|FFFFFF';
         return new google.maps.MarkerImage(url);
     }
 
