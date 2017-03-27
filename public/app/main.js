@@ -33,6 +33,7 @@ function init() {
     });
     $('#search').on('click', function() {
         var q = $('#search_text').val();
+        console.log('search test : ' + q);
         if (q === null || q === undefined || q === '') {
             // console.log('no word');
             return;
