@@ -30,24 +30,30 @@ body {
 .poi_recent {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .poi_recent a {
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .poi_visit_date {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+}
+
+.poi_place_info {
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .poi_open_now {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .poi_open_now:before {
@@ -63,7 +69,7 @@ body {
 .poi_rating {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .poi_rating:before {
@@ -75,7 +81,7 @@ body {
 .poi_price_level {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .poi_price_level:before {
@@ -94,7 +100,13 @@ body {
 .poi_vicinity {
     display: inline-block;
     margin-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
+}
+
+.poi_vicinity:before {
+    content: "\1F374";
+    color: orange;
+    margin-right: 0.5rem;
 }
 
 @media ( min-width: 768px) {

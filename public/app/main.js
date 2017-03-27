@@ -149,13 +149,13 @@ function createPlaceList(places) {
         var td = $('<td></td>');
         td.append(num(i + 1));
         td.append(recent_visit(poi));
+        td.append(place_info(poi));
         td.append(open_now(poi));
         td.append(name(poi));
         td.append(rating(poi));
         td.append(price_level(poi));
-        td.append(poi_img(poi, i));
         td.append(vicinity(poi));
-        td.append(place_info(poi));
+        td.append(poi_img(poi, i));
 
         var tr = $('<tr></tr>');
         tr.append(td);
@@ -215,7 +215,7 @@ function place_info(poi) {
     var info = $('<a></a>', {
         addClass: 'btn btn-default btn-xs',
         css: 'display:inline-block;',
-        text: 'desciption',
+        text: 'info',
         on: {
             click: function(event) {
 
@@ -238,7 +238,8 @@ function place_info(poi) {
             }
         }
     });
-    return info;
+    var place_info = $('<div class="poi_place_info"></div>').append(info);
+    return place_info;
 }
 
 function name(poi) {
