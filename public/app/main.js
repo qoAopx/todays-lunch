@@ -435,9 +435,7 @@ function set_range(range) {
 function createMarker(place, label) {
 
     var visited = (get_recent(place) !== null);
-    console.log(visited);
     var icon_type = icon(label, visited);
-    console.log(icon_type);
     var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         map: map,
