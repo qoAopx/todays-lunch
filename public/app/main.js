@@ -48,12 +48,16 @@ function init() {
             query: q
         }, callback);
 
-        $('.navbar-toggle').click(); //bootstrap 3.x by Richard
+        if (window.innerWidth < 768) {
+            $('.navbar-toggle').click(); //bootstrap 3.x by Richard
+        }
 
     });
 
     $('.nav a').on('click', function() {
-        $('.navbar-toggle').click(); //bootstrap 3.x by Richard
+        if (window.innerWidth < 768) {
+            $('.navbar-toggle').click(); //bootstrap 3.x by Richard
+        }
     });
 }
 
