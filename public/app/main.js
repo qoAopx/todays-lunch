@@ -31,7 +31,7 @@ function init() {
     $('#clear_history').on('click', function() {
         clear_history();
     });
-    $('#search').on('click', function() {
+    $('#search').on('submit', function() {
         var q = $('#search_text').val();
         console.log('search test : ' + q);
         if (q === null || q === undefined || q === '') {
