@@ -139,7 +139,7 @@ function createPlaceList(places) {
         td.append(name(poi));
         td.append(rating(poi));
         td.append(price_level(poi));
-        td.append(poi_img(poi));
+        td.append(poi_img(poi, i));
         td.append(vicinity(poi));
         td.append(place_info(poi));
 
@@ -255,16 +255,57 @@ function vicinity(poi) {
     }
 }
 
-function poi_img(poi) {
+function poi_img(poi, idx) {
+
     if (poi.hasOwnProperty("photos")) {
+        var carousel_id = 'carousel-img-' + idx;
+        var carousel = $('<div id="' + carousel_id + '" class="carousel slide" data-ride="carousel"></div>');
+        var inner = $('<div class="carousel-inner" role="listbox"></div>');
+
         for (var p = 0; p < poi.photos.length; p++) {
             var photo = poi.photos[p];
             var img = $('<img></img>', {
                 addClass: 'poi_img',
                 src: photo.getUrl({ 'maxWidth': 240, 'maxHeight': 240 })
             });
-            return img;
+            var active = (p === 0) ? ' active' : '';
+            inner.append($('<div class="item' + active + '"></div>').append(img));
         }
+        carousel.append(inner);
+        if (poi.photos.length > 1) {
+            carousel.append(btn_prev(carousel_id));
+            carousel.append(btn_next(carousel_id));
+        }
+        return carousel;
+    }
+    return $('');
+}
+
+function btn_prev(id) {
+    var b = $('<a class="left carousel-control" href="#' + id + '" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><span class="sr-only">Previous</span></a>');
+    return b;
+}
+
+function btn_next(id) {
+    var b = $('<a class="right carousel-control" href="#' + id + '" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><span class="sr-only">Next</span></a>');
+    return b;
+}
+
+
+function poi_img2(poi, idx) {
+    if (poi.hasOwnProperty("photos")) {
+        var ul = $('<div class="main-carousel"></div>');
+        ul.append('<div class="main-carousel" data-flickity=\' { "cellAlign": "left", "contain": true }\'></div>');
+        for (var p = 0; p < poi.photos.length; p++) {
+            var photo = poi.photos[p];
+            var img = $('<img></img>', {
+                //        addClass: 'poi_img',
+                src: photo.getUrl({ 'maxWidth': 240, 'maxHeight': 240 })
+            });
+            ul.append($('<div class="carousel-cell"></div>').append(img));
+        }
+        ul.append($('<div class="carousel-cell"></div>').append('<img src="https://lh4.googleusercontent.com/-Y0KWkZ2XCMo/VqBVJuCyhZI/AAAAAAAAABk/zvp3dJ-8_qo2CiHD0JEtQAenCRqG9KZbQCJkC/w240-h240-k/">'));
+        return ul;
     }
     return $('');
 }
