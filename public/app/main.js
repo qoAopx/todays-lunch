@@ -39,9 +39,11 @@ function init() {
             // console.log('no word');
             return;
         }
+
+        $('#loading_view').attr('style', 'display:block;');
+
         var service = new google.maps.places.PlacesService(map);
         var center = map.getCenter();
-        console.log(center);
         var request = {
             query: q,
             location: center,
@@ -49,9 +51,6 @@ function init() {
             types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
             rankby: google.maps.places.RankBy.DISTANCE
         };
-        console.log(request);
-        console.log(request.location.LatLng);
-
         service.textSearch(request, callback);
 
         if (window.innerWidth < 768) {
@@ -111,13 +110,15 @@ function loadMap(location) {
 
     $('#search_range').html(get_range() + ' m');
 
+    $('#loading_view').attr('style', 'display:block;');
     var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
+    var request = {
         location: location,
         radius: get_range(),
         types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
         rankby: google.maps.places.RankBy.DISTANCE
-    }, callback);
+    };
+    service.nearbySearch(request, callback);
 }
 
 function callback(results, status) {
@@ -125,6 +126,7 @@ function callback(results, status) {
     $('#message').html('');
     $('#message').attr('style', 'display:none;');
 
+    $('#loading_view').attr('style', 'display:none;');
 
     var places = [];
     var from = map.getCenter();
