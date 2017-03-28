@@ -140,6 +140,10 @@ function callback(results, status) {
     if (places.length === 0) {
         $('#message').html('No results can be found under this condition...');
         $('#message').attr('style', 'display:block;border:1px solid red;padding:1em;margin:1em;text-align:center;background-color:#ffffff;');
+
+        window.location.hash = "";
+        window.location.hash = "title_places";
+
         return;
     }
 
