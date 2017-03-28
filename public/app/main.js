@@ -40,13 +40,19 @@ function init() {
             return;
         }
         var service = new google.maps.places.PlacesService(map);
-        service.textSearch({
-            location: map.getCenter(),
-            radius: get_range(),
-            //types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
-            //rankby: google.maps.places.RankBy.DISTANCE,
-            query: q
-        }, callback);
+        var center = map.getCenter();
+        console.log(center);
+        var request = {
+            query: q,
+            location: center,
+            radius: String(get_range()),
+            types: ['restaurant', 'food', 'cafe', 'meal_delivery', 'meal_takeaway'],
+            rankby: google.maps.places.RankBy.DISTANCE
+        };
+        console.log(request);
+        console.log(request.location.LatLng);
+
+        service.textSearch(request, callback);
 
         if (window.innerWidth < 768) {
             $('.navbar-toggle').click(); //bootstrap 3.x by Richard
@@ -115,16 +121,42 @@ function loadMap(location) {
 }
 
 function callback(results, status) {
+    // clear message
+    $('#message').html('');
+    $('#message').attr('style', 'display:none;');
+
+
+    var places = [];
+    var from = map.getCenter();
+    var range = get_range();
+    for (var i = 0; i < results.length; i++) {
+        var to = results[i].geometry.location;
+        if (range > distance(from, to)) {
+            places.push(results[i]);
+        }
+        //console.log(distance(from, to));
+    }
+
+    if (places.length === 0) {
+        $('#message').html('No results can be found under this condition...');
+        $('#message').attr('style', 'display:block;border:1px solid red;padding:1em;margin:1em;text-align:center;background-color:#ffffff;');
+        return;
+    }
+
     if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-        g_places = results; //一時保存
+        g_places = places; //一時保存
 
-        createPlaceList(results);
-        createMarkers(results);
+        createPlaceList(places);
+        createMarkers(places);
 
         window.location.hash = "";
         window.location.hash = "title_places";
     }
+}
+
+function distance(from, to) {
+    return google.maps.geometry.spherical.computeDistanceBetween(from, to);
 }
 
 function createMarkers(places) {
@@ -174,11 +206,14 @@ function createHistoryList() {
 
 function createPlaceList(places) {
 
+    var from = map.getCenter();
+
     var tbl = $('#places tbody');
     //    $('#places').$("tbody").html('');
     $('#places tbody tr').remove();
     for (var i = 0; i < places.length; i++) {
         var poi = places[i];
+        var to = places[i].geometry.location;
         //console.log(poi);
         var td = $('<td></td>');
         td.append(num(i + 1));
@@ -186,6 +221,7 @@ function createPlaceList(places) {
         td.append(place_info(poi));
         td.append(open_now(poi));
         td.append(name(poi));
+        td.append($('<span>(' + Math.round(distance(from, to)) + ' m)</span>'));
         td.append(rating(poi));
         td.append(price_level(poi));
         td.append(vicinity(poi));
