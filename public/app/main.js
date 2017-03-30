@@ -5,6 +5,13 @@ var g_places = [];
 var markers = [];
 
 function init() {
+    //map & event init
+
+    var location = new google.maps.LatLng(35.684, 139.760); // tokyo station
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 15
+    });
 
     google.maps.event.addDomListener(window, "resize", function() {
         if (map !== null && map !== undefined) {
@@ -14,8 +21,14 @@ function init() {
         }
     });
 
-    currentPosition();
-    createHistoryList();
+    google.maps.event.addListener(map, 'tilesloaded', function() {
+        // 起動時の初回のみ発動
+        google.maps.event.clearListeners(map, 'tilesloaded');
+        // console.log('tilesloaded');
+        map_loaded();
+    });
+
+    infowindow = new google.maps.InfoWindow();
 
     $('#center_position').on('click', function() {
         //console.log('#map_center');
@@ -64,6 +77,12 @@ function init() {
             $('.navbar-toggle').click(); //bootstrap 3.x by Richard
         }
     });
+
+}
+
+function map_loaded() {
+    currentPosition();
+    createHistoryList();
 }
 
 function search_range(_search_range) {
@@ -74,13 +93,9 @@ function search_range(_search_range) {
 }
 
 function currentPosition() {
-    var location = {};
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            location.lat = latlng.lat();
-            location.lng = latlng.lng();
-            //console.log(location);
+            var location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             loadMap(location);
         }, function(e) {
             console.log(e);
@@ -95,18 +110,10 @@ function loadMap(location) {
 
     // console.log(location);
     if (location === null || location === undefined) {
-        location = {};
-        // tokyo station
-        location.lat = 35.684;
-        location.lng = 139.760;
+        location = new google.maps.LatLng(35.684, 139.760); // tokyo station
     }
 
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 15
-    });
-
-    infowindow = new google.maps.InfoWindow();
+    map.setCenter(location);
 
     $('#search_range').html(get_range() + ' m');
 
@@ -123,7 +130,6 @@ function loadMap(location) {
 
 function callback(results, status) {
     // clear message
-    $('#message').html('');
     $('#message').attr('style', 'display:none;');
 
     $('#loading_view').attr('style', 'display:none;');
@@ -140,8 +146,7 @@ function callback(results, status) {
     }
 
     if (places.length === 0) {
-        $('#message').html('No results can be found under this condition...');
-        $('#message').attr('style', 'display:block;border:1px solid red;padding:1em;margin:1em;text-align:center;background-color:#ffffff;');
+        $('#message').attr('style', 'display:block;');
 
         window.location.hash = "";
         window.location.hash = "title_places";

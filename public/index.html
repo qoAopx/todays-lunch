@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h4>Search Range (<span id="search_range"></span>)</h4>
+                        <h4><span class="glyphicon glyphicon-cog"></span> Search Range (<span id="search_range"></span>)</h4>
                     </div>
                     <div class="bs-component" style="margin-bottom: 15px;margin-top:15px;">
                         <div class="btn-group btn-group-justified">
@@ -85,8 +85,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h4>Places</h4>
-                        <span id="message" class="message"></span>
+
+                        <div id="message" class="modal" style="display:none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"><span class="glyphicon glyphicon-warning-sign"></span> No Result</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>No results can be found under this condition...</p>
+                                        <p>Please move map center point.
+                                            <a href="#title_map"># Map</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4><span class="glyphicon glyphicon-cutlery"></span> Places</h4>
                         <span class="poi_open_now">open now</span>
                         <span class="poi_rating">place's rating</span>
                         <span class="poi_price_level">0:affordable - 4:expensive</span>
@@ -109,10 +125,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h4>Map</h4>
+                        <h4><span class="glyphicon glyphicon-map-marker "></span> Map</h4>
                         <div class="bs-component">
-                            <a href="#" id="center_position" class="btn btn-primary btn-sm">Map Center Position</a>
-                            <a href="#" id="current_position" class="btn btn-primary btn-sm">Current GPS Position</a>
+                            <a href="#" id="center_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span> Map Center Position</a>
+                            <a href="#" id="current_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span> Current GPS Position</a>
                         </div>
                     </div>
                     <div class="bs-component">
@@ -127,7 +143,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
-                        <h3>History</h3>
+                        <h3><span class="glyphicon glyphicon-calendar "></span> History</h3>
                         <div class="bs-component">
                             <a href="#" id="clear_history" class="btn btn-warning btn-sm">Clear History</a>
                         </div>

@@ -9,6 +9,11 @@ body {
     overflow-x: hidden;
 }
 
+.modal {
+    position: relative;
+    z-index: 0;
+}
+
 #loading_view {
     display: block;
     z-index: 1000;
