@@ -352,11 +352,12 @@ var app = $(function($) {
     }
 
     function place_info(poi) {
-        var info = $('<a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-map-marker">Map</span></a>', {
+        var info = $('<a></a>', {
             css: 'display:inline-block;',
+            text: 'Map',
+            addClass: 'btn btn-primary btn-xs glyphicon glyphicon-map-marker',
             on: {
                 click: function(event) {
-
                     var request = {
                         placeId: poi.place_id
                     };
