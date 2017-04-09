@@ -361,25 +361,14 @@ var app = $(function($) {
     function poi_img(poi, idx) {
 
         if (poi.hasOwnProperty("photos")) {
-            var carousel_id = 'carousel-img-' + idx;
-            var carousel = $('<div id="' + carousel_id + '" class="carousel slide" data-ride="carousel"></div>');
-            var inner = $('<div class="carousel-inner" role="listbox"></div>');
-
             for (var p = 0; p < poi.photos.length; p++) {
                 var photo = poi.photos[p];
                 var img = $('<img></img>', {
-                    addClass: 'poi_img',
+                    addClass: 'img-thumbnail poi_img',
                     src: photo.getUrl({ 'maxWidth': 240, 'maxHeight': 240 })
                 });
-                var active = (p === 0) ? ' active' : '';
-                inner.append($('<div class="item' + active + '"></div>').append(img));
+                return img;
             }
-            carousel.append(inner);
-            if (poi.photos.length > 1) {
-                carousel.append(btn_prev(carousel_id));
-                carousel.append(btn_next(carousel_id));
-            }
-            return carousel;
         }
         return $('');
     }
