@@ -234,7 +234,7 @@ var app = $(function($) {
         for (var r = 0; r < rows; r++) {
             var row = $('<div class="row"></div>');
             for (var c = 0; c < col_size; c++) {
-                console.log(places.length + "\t" + i + "\t" + (i < max));
+                // console.log(places.length + "\t" + i + "\t" + (i < max));
                 if (i < max) {
                     var poi = places[i];
                     var to = places[i].geometry.location;
@@ -352,10 +352,8 @@ var app = $(function($) {
     }
 
     function place_info(poi) {
-        var info = $('<a></a>', {
-            addClass: 'btn btn-default btn-xs',
+        var info = $('<a class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-map-marker">Map</span></a>', {
             css: 'display:inline-block;',
-            text: 'Map',
             on: {
                 click: function(event) {
 
