@@ -115,6 +115,7 @@ body {
 
 .poi_img {
     display: block;
+    margin: 5px auto;
 }
 
 .poi_vicinity {
