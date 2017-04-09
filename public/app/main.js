@@ -225,6 +225,58 @@ var app = $(function($) {
 
         var from = map.getCenter();
 
+        var tbl = $('#places');
+        tbl.html('');
+        var col_size = 3;
+        var rows = Math.floor(places.length / col_size) + 1;
+        var i = 0;
+        var max = places.length;
+        for (var r = 0; r < rows; r++) {
+            var row = $('<div class="row"></div>');
+            for (var c = 0; c < col_size; c++) {
+                console.log(places.length + "\t" + i + "\t" + (i < max));
+                if (i < max) {
+                    var poi = places[i];
+                    var to = places[i].geometry.location;
+
+                    var recent_poi = get_recent(poi);
+                    var visit = (recent_poi === null) ? 'panel-primary' : 'panel-success';
+
+                    var p = $('<div></div>', { addClass: 'panel ' + visit });
+                    var h = $('<div class="panel-heading"></div>');
+                    var b = $('<div class="panel-body"></div>');
+                    var f = $('<div class="panel-footer"></div>');
+
+                    h.append(num(i + 1));
+                    h.append(recent_visit(poi));
+                    h.append(name(poi));
+
+                    b.append(open_now(poi));
+                    b.append(rating(poi));
+                    b.append(price_level(poi));
+                    b.append(poi_img(poi, i));
+
+                    f.append(place_info(poi));
+                    f.append(vicinity(poi));
+                    f.append($('<span>(' + Math.round(distance(from, to)) + ' m)</span>'));
+
+                    p.append(h).append(b).append(f);
+
+                    row.append($('<div class="col-sm-4"></div>').append(p));
+                }
+                i++;
+            }
+            var container = $('<div class="container"></div>');
+            container.append(row);
+            tbl.append(container);
+        }
+
+    }
+
+    function createPlaceList2(places) {
+
+        var from = map.getCenter();
+
         var tbl = $('#places tbody');
         //    $('#places').$("tbody").html('');
         $('#places tbody tr').remove();
@@ -303,7 +355,7 @@ var app = $(function($) {
         var info = $('<a></a>', {
             addClass: 'btn btn-default btn-xs',
             css: 'display:inline-block;',
-            text: 'info',
+            text: 'Map',
             on: {
                 click: function(event) {
 
