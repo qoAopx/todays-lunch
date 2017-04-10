@@ -79,6 +79,11 @@ var app = $(function($) {
             }
         });
 
+        $('.range').on('click', function() {
+            var range = this.getAttribute('range');
+            search_range(range);
+        });
+
     }
 
     function map_loaded() {
