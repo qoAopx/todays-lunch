@@ -1,4 +1,6 @@
-var app = $(function($) {
+var App = App || {};
+
+App.controler = $(function($) {
 
     var map;
     var infowindow;
@@ -564,5 +566,5 @@ var app = $(function($) {
 
 function init_event() {
     console.log('callback from google map api');
-    app.init_event();
+    App.controler.init_event();
 }
