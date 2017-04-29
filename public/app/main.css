@@ -21,6 +21,12 @@ body {
     border: 1px solid #ffffff;
 }
 
+#title {
+    user-select: all;
+    -webkit-user-select: all;
+    -moz-user-select: all;
+}
+
 #loading_view {
     display: block;
     z-index: 1000;
