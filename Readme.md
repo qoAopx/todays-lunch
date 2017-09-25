@@ -1,38 +1,18 @@
-# Heroku Static Provider
+# Today's Lunch
 
-Static site provider for Heroku.
+- https://todays-lunch.herokuapp.com/
 
+- 自前の簡単なWebアプリではBootstrapなんて大仰かな〜と、CSSをぽちぽち書いていたんですが、めんどくさがってばかりいてもだめだなということでBootstrapの勉強も兼ねてWebアプリをつくってみました。
 
-## Installation
+## Webアプリの仕様
 
-You need sign-in or sign-up to Heroku.
+- 今日のおすすめランチスポットを探します。
+- 現在地から一定範囲内のランチスポットを検索、範囲は変更可能です。
+- ランチに行ったお店を記憶しておいて、マンネリを防ぐことができます。
+- また、行ったお店はヒストリーに表示されます。
 
-    $ git clone https://github.com/nulltask/heroku-static-provider.git my-site
-    $ cd my-site
-    $ heroku create
-    $ git push -u heroku master
-    $ heroku open
+## システム仕様
 
-## Deployment
-
-Add or update files in `/public`.
-
-    $ git add .
-    $ git commit -a -m 'some commit message'
-    $ git push heroku master
-    $ heroku open
-
-## Notes
-
-### Adding Basic Auth
-
-	$ heroku config:set USER=username
-	$ heroku config:set PASS=password
-
-### Screencast
-
-  * https://vimeo.com/71315109
-
-## License
-
-MIT
+- all javascriptで作ってます。
+- Bootstrapを使ってレスポンシブなデザインにしています。
+- ランチに行ったお店の記録はローカルストレージに保存しています。

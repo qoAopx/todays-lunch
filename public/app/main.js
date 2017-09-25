@@ -86,7 +86,7 @@ App.controler = $(function($) {
             search_range(range);
         });
 
-    }
+    };
 
     function map_loaded() {
         currentPosition();
@@ -249,7 +249,9 @@ App.controler = $(function($) {
                     var recent_poi = get_recent(poi);
                     var visit = (recent_poi === null) ? 'panel-primary' : 'panel-success';
 
-                    var p = $('<div></div>', { addClass: 'panel ' + visit });
+                    var p = $('<div></div>', {
+                        addClass: 'panel ' + visit
+                    });
                     var h = $('<div class="panel-heading"></div>');
                     var b = $('<div class="panel-body"></div>');
                     var f = $('<div class="panel-footer"></div>');
@@ -423,7 +425,10 @@ App.controler = $(function($) {
                 var photo = poi.photos[p];
                 var img = $('<img></img>', {
                     addClass: 'img-thumbnail poi_img',
-                    src: photo.getUrl({ 'maxWidth': 240, 'maxHeight': 240 })
+                    src: photo.getUrl({
+                        'maxWidth': 240,
+                        'maxHeight': 240
+                    })
                 });
                 return img;
             }
@@ -450,7 +455,10 @@ App.controler = $(function($) {
                 var photo = poi.photos[p];
                 var img = $('<img></img>', {
                     //        addClass: 'poi_img',
-                    src: photo.getUrl({ 'maxWidth': 240, 'maxHeight': 240 })
+                    src: photo.getUrl({
+                        'maxWidth': 240,
+                        'maxHeight': 240
+                    })
                 });
                 ul.append($('<div class="carousel-cell"></div>').append(img));
             }
