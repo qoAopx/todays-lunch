@@ -104,7 +104,7 @@ App.controler = $(function($) {
         if (navigator.geolocation) {
             var options = {
                 enableHighAccuracy: true,
-                timeout: 5000,
+                timeout: 1000,
                 maximumAge: 0
             };
             navigator.geolocation.getCurrentPosition(function(position) {
