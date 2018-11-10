@@ -9,6 +9,7 @@
     <title>Today's Lunch</title>
 
     <link rel="stylesheet" type="text/css" href="app/main.css">
+    <link rel="manifest" href="manifest.json">
 
     <link rel="shortcut icon" href="app/icons/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="app/icons/apple-touch-icon.png" />
@@ -29,7 +30,15 @@
 </head>
 
 <body>
-
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
     <header>
 
 
@@ -131,8 +140,10 @@
                     <div class="page-header">
                         <h4><span class="glyphicon glyphicon-map-marker"></span> Map</h4>
                         <div class="bs-component">
-                            <a id="center_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span> Map Center</a>
-                            <a id="current_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span> Current GPS</a>
+                            <a id="center_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span>
+                                Map Center</a>
+                            <a id="current_position" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search "></span>
+                                Current GPS</a>
                         </div>
                     </div>
                     <div class="bs-component">
@@ -234,6 +245,35 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+
+
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: 'your-app-id',
+                xfbml: true,
+                version: 'v2.10'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
 </body>
 
 </html>
