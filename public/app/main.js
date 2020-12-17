@@ -319,7 +319,7 @@ App.controler = $(function($) {
 
     function open_now(poi) {
         if (poi.hasOwnProperty("opening_hours") && poi.opening_hours !== undefined) {
-            if (poi.opening_hours.open_now) {
+            if (poi.opening_hours.isOpen()) {
                 return $('<div class="poi_open_now" title="open now"></div>');
             }
         }
